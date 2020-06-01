@@ -4,5 +4,5 @@ public interface ISubscribe {
 
     void handle(ICallback iCallback);
 
-    void connect(String key);
+    void register(String key);
 }
