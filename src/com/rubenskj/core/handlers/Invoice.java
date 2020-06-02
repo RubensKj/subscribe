@@ -1,4 +1,4 @@
-package com.rubenskj.core.threads;
+package com.rubenskj.core.handlers;
 
 import com.rubenskj.core.entity.Subscribe;
 
@@ -8,11 +8,9 @@ public class Invoice {
 
     private static final Logger LOGGER = Logger.getLogger(Invoice.class.getName());
 
-    private Subscribe subscribe;
-
     public void produce() throws InterruptedException {
         LOGGER.info("Creating subscribe..");
-        subscribe = new Subscribe(this::handleCallback);
+        Subscribe subscribe = new Subscribe(this::handleCallback);
 
         LOGGER.info("Waiting..");
         Thread.sleep(1000);

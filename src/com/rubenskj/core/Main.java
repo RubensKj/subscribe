@@ -1,6 +1,6 @@
 package com.rubenskj.core;
 
-import com.rubenskj.core.threads.Invoice;
+import com.rubenskj.core.handlers.Invoice;
 
 public class Main {
     public static void main(String[] args) throws InterruptedException {
