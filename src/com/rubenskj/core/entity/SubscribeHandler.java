@@ -10,7 +10,7 @@ import java.util.logging.Logger;
 public class SubscribeHandler implements ISubscribe {
 
     private static final Logger LOGGER = Logger.getLogger(SubscribeHandler.class.getName());
-    public static final Map<String, ISubscribe> queue = new ConcurrentHashMap<>();
+    public static final Map<String, ISubscribe> subscribers = new ConcurrentHashMap<>();
 
     private String key;
 
@@ -21,8 +21,8 @@ public class SubscribeHandler implements ISubscribe {
         this.key = key;
     }
 
-    public static ISubscribe getFromQueue(String key) {
-        return queue.get(key);
+    public static ISubscribe getFromSubscribers(String key) {
+        return subscribers.get(key);
     }
 
     @Override
@@ -32,7 +32,7 @@ public class SubscribeHandler implements ISubscribe {
         }
 
         callback.run();
-        queue.remove(this.getKey());
+        subscribers.remove(this.getKey());
     }
 
     @Override
@@ -40,7 +40,7 @@ public class SubscribeHandler implements ISubscribe {
         SubscribeHandler subscribeHandler = new SubscribeHandler(key);
 
         LOGGER.info("Registering subscribe with key -> " + key + "; subscriber -> {" + subscribeHandler + "}");
-        queue.put(key, subscribeHandler);
+        subscribers.put(key, subscribeHandler);
     }
 
     public String getKey() {

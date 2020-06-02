@@ -5,7 +5,7 @@ import com.rubenskj.core.interfaces.ISubscribe;
 
 import java.util.UUID;
 
-import static com.rubenskj.core.entity.SubscribeHandler.getFromQueue;
+import static com.rubenskj.core.entity.SubscribeHandler.getFromSubscribers;
 
 public class Subscribe {
     private final String key;
@@ -18,7 +18,7 @@ public class Subscribe {
     }
 
     public void subscribe() {
-        ISubscribe subscribe = getFromQueue(key);
+        ISubscribe subscribe = getFromSubscribers(key);
 
         if (subscribe == null) {
             throw new IllegalStateException("Any subscribe has been set.");
