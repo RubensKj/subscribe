@@ -21,6 +21,10 @@ public class SubscribeHandler implements ISubscribe {
         this.key = key;
     }
 
+    public static ISubscribe getFromQueue(String key) {
+        return queue.get(key);
+    }
+
     @Override
     public void handle(ICallback callback) {
         if (callback == null) {
